@@ -31,7 +31,7 @@ server-rendered image API.
       map coverage is global and is not tied to Corfeed or any UI framework
 - [ ] @accept use D3 selection and `d3-geo` for SVG map rendering and use
       `topojson-client` to decode released TopoJSON shards before rendering
-- [ ] @accept load one eager minor-island basemap plus four lazy major-land
+- [ ] @accept load one eager minor-island basemap plus seven lazy regional-land
       shards selected by viewport bounds and cached by immutable artifact URL
 - [ ] @accept define one versioned `MapSpec` that drives browser rendering,
       server SVG/PNG rendering, image sharing, and future framework adapters
@@ -88,21 +88,26 @@ versioned, and sufficient for client editing as well as server rendering.
 
 ### @contract @active world artifact manifest
 
-@scope global map data @target Five standalone artifacts compose the global land
+@scope global map data @target Eight standalone artifacts compose the global land
 layer with lazy loading and reproducible server/client selection.
 
 @memory ../memories/cloudmappr/strategy/world-topojson-shards.md
+@memory ../memories/cloudmappr/strategy/world-artifact-generation-toolchain.md
 @memory ../memories/cloudmappr/strategy/github-esm-artifact-delivery.md
 @memory ../memories/cloudmappr/contracts/world-artifact-provenance.md
 
-- [ ] @accept generate `world-basemap`, `americas`, `afro-eurasia`,
-      `oceania-major`, and `antarctica` as independent TopoJSON files
+- [ ] @accept generate `world-basemap`, `north-america`, `south-america`,
+      `europe`, `africa`, `asia`, `oceania-major`, and `antarctica` as
+      independent TopoJSON files
 - [ ] @accept minor islands, including Micronesia, remain in the eager basemap;
-      every atomic source land part appears in exactly one of five artifacts
+      every atomic source land part appears in exactly one of eight artifacts
 - [ ] @accept the manifest declares artifact ID, URL, geographic bbox, object
       name, eager/lazy state, and world-data release identity
 - [ ] @accept client and server select the same shards for the same normalized
       bounds, including bounds crossing the antimeridian
+- [ ] @accept the build-only Mapshaper adapter and Deno TypeScript generator each
+      have a contract; pure partition, validation, and manifest primitives never
+      import filesystem, process, network, or CLI effects
 
 ### @contract @active browser composition and export
 
@@ -169,13 +174,17 @@ adapters so browser and server behavior cannot drift.
 @memory ../memories/cloudmappr/strategy/isomorphic-baseline-implementation-plan.md
 @memory ../memories/cloudmappr/strategy/map-component-migration-completeness.md
 @memory ../memories/cloudmappr/strategy/runtime-and-functional-baseline.md
+@memory ../memories/cloudmappr/strategy/world-artifact-generation-toolchain.md
 
 - [ ] @accept define public types, projection/viewBox policy, and fixture
       manifest before extracting any page-bound map behavior
 - [ ] @accept implement shared spec validation, canonicalization, scene building,
       TopoJSON decoding, and D3 path generation before the MJS wrapper
-- [ ] @accept implement the five-shard generator and exact-coverage proof before
+- [ ] @accept implement the eight-shard generator and exact-coverage proof before
       relying on lazy viewport selection
+- [ ] @accept pin and invoke Mapshaper only as a build-time transformation adapter;
+      the Deno generator owns typed assignment, validation, manifest, and release
+      records through functional-core/effect-boundary contracts
 - [ ] @accept implement Deno SVG then PNG rendering from the same shared scene
       before exposing render URLs to the browser
 - [ ] @accept add GitHub/esm.sh release delivery and a clean external consumer
@@ -193,6 +202,38 @@ adapters so browser and server behavior cannot drift.
       governing contracts; the deferred experiment remains governed by its own
       retained proof card
 
+### @decision @ready local GitHub Pages build delivery
+
+@scope static demo publication @target Build and verify the Pages site locally,
+then publish generated output through a dedicated branch without a repository
+GitHub Actions workflow.
+
+@memory ../memories/cloudmappr/strategy/local-github-pages-delivery.md
+
+- [ ] @accept one local command builds the static Pages payload and a second
+      local command previews that exact payload before publication
+- [ ] @accept publication updates only the root of a dedicated `gh-pages` branch;
+      the source branch remains free of generated Pages output
+- [ ] @accept the Pages decision does not prescribe the MJS controller, manifest,
+      data-artifact build, or release delivery pipeline while those remain open
+
+### @decision @ready esm.sh selected-shard delivery
+
+@scope public module CDN @target Deliver the controller and only manifest-selected
+world shards from one immutable GitHub release without eager global geometry.
+
+@memory ../memories/cloudmappr/strategy/github-esm-artifact-delivery.md
+@memory ../memories/cloudmappr/strategy/world-topojson-shards.md
+
+- [ ] @accept publish explicit controller, manifest, and per-shard module entry
+      points; no public barrel entry may statically import every world shard
+- [ ] @accept the manifest maps each selected artifact to one immutable URL and
+      browser and Deno resolve the same release identity
+- [ ] @accept a release fixture proves esm.sh dynamic imports transfer only the
+      eager basemap and viewport-selected shards, with no mutable-ref fallback
+- [ ] @accept record and justify any esm.sh transform options, including target,
+      bundling, externals, or raw-data delivery, in the delivery manifest
+
 ### @proof @ready parity and delivery evidence
 
 @scope baseline acceptance @target Prove semantic and visual parity across the
@@ -206,7 +247,7 @@ editor, plain component use, server render service, and shared image URL.
 - [ ] @accept DOM tests cover basemap/lazy shard mount, point/label updates,
       keyboard markers, resize, focus, and controller teardown
 - [ ] @accept artifact tests prove no atomic land part is duplicated or omitted
-      across five shards and each shard decodes independently
+      across eight shards and each shard decodes independently
 - [ ] @accept client and Deno fixtures produce the same scene geometry, marker,
       label, style, and world-data release selection for identical `MapSpec` input
 - [ ] @accept canonical PNG URLs are stable cacheable image responses and render

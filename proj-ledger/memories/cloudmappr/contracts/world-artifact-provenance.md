@@ -22,8 +22,11 @@ retrieval and regeneration tooling are build concerns.
 - Record the World Atlas/Natural Earth source name, source version, retrieval
   URL and date, license or attribution terms, and input checksum.
 - Record the Atlas/Mapshaper generation workflow, including tool versions,
-  generator source revision, input options, and the exact source-to-shard
-  partition rationale.
+      generator source revision, input options, and the exact source-to-shard
+      partition rationale.
+- Record the versioned atomic-part assignment table, including reviewed
+  transcontinental, overseas-territory, and offshore-part decisions for the
+  eight-shard policy.
 - Record each emitted artifact's role, object name, bbox, immutable URL,
   integrity metadata when available, and the world-data release identity shared
   by the manifest and canonical render hash.

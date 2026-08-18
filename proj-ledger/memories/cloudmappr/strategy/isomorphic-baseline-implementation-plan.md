@@ -135,17 +135,21 @@ Land, markers, labels, and export all share the same projection. Client/server
 callers submit geographic lon/lat, never screen pixels. Any future server overlay
 also begins as MapSpec data and passes through the shared projector.
 
-## World Data And Five Shards
+## World Data And Eight Shards
 
-The initial global layer is not one large file. Generate five standalone TopoJSON
+The initial global layer is not one large file. Generate eight standalone TopoJSON
 artifacts from the World Atlas source:
 
 1. `world-basemap`: all minor islands, including Micronesia, and land not assigned
    to a major group; it loads immediately.
-2. `americas`: major North and South American land.
-3. `afro-eurasia`: Africa, Europe, and Asia major land.
-4. `oceania-major`: Australia, New Zealand, and assigned major Oceania land.
-5. `antarctica`: Antarctic land.
+2. `north-america`: assigned major North American, Central American, and Caribbean
+   land.
+3. `south-america`: assigned major South American land.
+4. `europe`: assigned major European land.
+5. `africa`: assigned major African land.
+6. `asia`: assigned major Asian land.
+7. `oceania-major`: Australia, New Zealand, and assigned major Oceania land.
+8. `antarctica`: Antarctic land.
 
 Partition source multipart geometry into atomic land parts before group assignment
 so no part is duplicated or omitted. Re-topologize each shard independently.
@@ -252,7 +256,7 @@ uses the identical released manifest, not a mutable branch or unrelated asset se
    construction independently of DOM or HTTP.
 4. Extract/build the MJS D3 browser controller against a one-shard fixture,
    including accessibility, cleanup, bounds, points, labels, and focus.
-5. Build world-data partition tooling, five artifacts, and exact coverage proof.
+5. Build world-data partition tooling, eight artifacts, and exact coverage proof.
 6. Add lazy artifact loading, immutable URL caches, antimeridian selection, and
    regional/full-world browser fixtures.
 7. Implement Deno SVG output from the shared scene, then canonical PNG rendering,
@@ -266,7 +270,7 @@ uses the identical released manifest, not a mutable branch or unrelated asset se
 
 - Unit tests for validation, canonicalization, hash identity, bounds normalization,
   antimeridian splitting, artifact selection, and cache de-duplication.
-- Data tests proving each atomic land part appears once, all five shards decode,
+- Data tests proving each atomic land part appears once, all eight shards decode,
   and their union matches the unsplit source.
 - Browser DOM tests for eager/lazy mounting, stable joins, panning, focus, points,
   labels, keyboard activation, resize, and repeated create/destroy cycles.

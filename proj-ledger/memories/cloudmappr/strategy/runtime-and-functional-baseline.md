@@ -29,6 +29,9 @@ the declared runtime until project tasks are introduced.
 - Represent expected validation, decoding, and transport failures with
   `neverthrow` results. Do not add `effect` to the baseline: one typed-failure
   model is sufficient until a concrete workflow needs a larger effect runtime.
+- Build generators follow the same boundary: typed, readonly domain primitives
+  and `Result`-returning transformations stay pure; Deno filesystem, network,
+  process, and third-party CLI calls are injected ports in composition modules.
 
 ## Enforcement And Tests
 
@@ -56,3 +59,8 @@ These package names and candidate versions were checked on 2026-08-18 for
 registry existence, deprecation, malware, and typosquatting signals. Deno's
 minimum-dependency-age policy blocked newly published `remeda` 2.42.0, so the
 workspace uses the established render-web version instead.
+
+The build-only world-geometry adapter pins `mapshaper` 0.7.53 as a development
+dependency. Its use and its stricter functional contract are governed by
+`world-artifact-generation-toolchain.md`; it is not a browser or Deno render
+runtime dependency.
