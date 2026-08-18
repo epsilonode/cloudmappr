@@ -1,0 +1,48 @@
+version: 1
+enabled: true
+mode: normal
+router_version: 1
+
+hot_path:
+  t0:
+    entry: AGENTS.md
+    principle: Use progressive disclosure. Do not infer work state from directory browsing.
+  t1:
+    read:
+      - control.yaml
+    grep:
+      paths:
+        - roadmaps/cloudmappr.md
+      pattern: '^(@roadmap|@log|@meta|## @tier|### @(work|contract|proof|risk|decision|gap) )'
+    enter: Read the highest active or ready tier section that matches the request. Use document order
+      within that tier when several items match.
+    avoid:
+      - reading the full roadmap during orientation
+      - reading memory bodies before checking their hook and refs
+  t2:
+    read:
+      - selected roadmap section only
+      - linked memory frontmatter and hook lines
+    inspect: Read a memory body, log, or proof artifact only when the selected item requires it.
+  t3:
+    search: Use Glob for candidate paths and Grep for exact symbols, route paths, filenames, and error
+      text before opening source files.
+    return: Promote a durable discovery to the selected roadmap item, its governing memory, or its log.
+
+routes:
+  ledger: ledger.yaml
+  discovery_guidance: discovery-guidance.md
+  format_guidance: format-guidance.md
+  memory_guidance: making-memories.md
+  runtime: ../mise.toml
+
+active:
+  - id: cloudmappr
+    roadmap: roadmaps/cloudmappr.md
+    memories: memories/cloudmappr/
+    log: logs/cloudmappr.logfmt
+    status: active
+
+notes:
+  - control.yaml is the routing source of truth; roadmap metadata is local self-description.
+  - Roadmaps hold active work, memories hold durable rules and rationale, and logs hold append-only evidence.

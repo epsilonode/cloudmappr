@@ -1,0 +1,22 @@
+[tools]
+deno = "latest"
+
+[tasks.lint]
+description = "Run Deno and functional ESLint rules"
+run = "deno task lint"
+
+[tasks.check]
+description = "Type-check the Cloudmappr core entrypoint"
+run = "deno task check"
+
+[tasks.test]
+description = "Run colocated atomic and seam tests"
+run = "deno task test"
+
+[tasks.test-live]
+description = "Run explicit opt-in live test conventions"
+run = "deno task test:live"
+
+[tasks.verify]
+description = "Run lint, type checks, and non-live tests"
+run = "deno task verify"

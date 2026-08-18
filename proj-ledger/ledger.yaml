@@ -1,0 +1,54 @@
+version: 1
+name: cloudmappr-proj-ledger
+purpose: Progressive-disclosure router for Cloudmappr roadmap, memory, and evidence maintenance.
+
+entrypoints:
+  control: control.yaml
+  discovery_guidance: discovery-guidance.md
+  format_guidance: format-guidance.md
+  memory_guidance: making-memories.md
+  runtime: ../mise.toml
+
+directory_contract:
+  control: Active-roadmap router and tiered orientation policy.
+  roadmaps: Compact execution state using tier and item heading hooks.
+  memories: Roadmap-owned durable cards discovered grep-first through frontmatter hooks.
+  logs: Append-only roadmap-scoped logfmt evidence.
+
+ledgers:
+  rule: Each active roadmap owns a same-named roadmap file, memory root, and log.
+  active:
+    - id: cloudmappr
+      roadmap: roadmaps/cloudmappr.md
+      memories: memories/cloudmappr/
+      log: logs/cloudmappr.logfmt
+      status: active
+
+routes:
+  t0_entry:
+    source: ../AGENTS.md
+    objective: Point agents to control.yaml without loading detailed project context.
+  t1_orient:
+    read:
+      - control.yaml
+    grep: control.yaml#hot_path.t1.grep
+    objective: Select a single active roadmap tier and item from grepable hooks.
+  t2_engage:
+    read:
+      - selected roadmap section
+      - linked memory frontmatter and hook lines
+    objective: Load only the contract, plan, or proof triggered by the selected item.
+  t3_explore:
+    read:
+      - discovery-guidance.md
+    objective: Use narrow Glob and Grep searches before source reads; return durable findings to the ledger.
+  runtime:
+    read:
+      - ../mise.toml
+    objective: Use the declared Deno runtime through `mise exec -- deno ...` before project tasks exist.
+
+maintenance_invariants:
+  - Do not read whole roadmaps for orientation.
+  - Do not read all memory bodies before searching frontmatter hooks.
+  - Keep roadmaps as active routing state, memories as durable documentation, and logs as forensic evidence.
+  - Append logs for meaningful durable outcomes; do not rewrite earlier log lines.

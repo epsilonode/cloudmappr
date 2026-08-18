@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "tasks": {
+    "lint:deno": "deno lint packages",
+    "lint:fp": "deno run -A npm:eslint packages",
+    "lint": "deno task lint:deno && deno task lint:fp",
+    "check": "deno check packages/core/mod.ts",
+    "test": "deno test packages --ignore=packages/core/src/fp.live.test.ts",
+    "test:live": "deno test packages/core/src/fp.live.test.ts",
+    "verify": "deno task lint && deno task check && deno task test"
+  }
+}
