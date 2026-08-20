@@ -1,0 +1,38 @@
+{
+  "source": "world-atlas@2.0.2/countries-10m",
+  "revision": "seeded-frontier-v3-southern-ocean",
+  "regions": [
+    { "id": "north-america", "seed": [-100, 45], "priority": 1, "maxSeedDistanceKm": 12000, "maxFrontierGapKm": 650 },
+    { "id": "south-america", "seed": [-60, -15], "priority": 2, "maxSeedDistanceKm": 12000, "maxFrontierGapKm": 650 },
+    { "id": "europe", "seed": [15, 52], "priority": 3, "maxSeedDistanceKm": 12000, "maxFrontierGapKm": 650 },
+    { "id": "africa", "seed": [20, 0], "priority": 4, "maxSeedDistanceKm": 12000, "maxFrontierGapKm": 650 },
+    { "id": "asia", "seed": [80, 35], "priority": 5, "maxSeedDistanceKm": 12000, "maxFrontierGapKm": 650 },
+    { "id": "oceania-major", "seed": [135, -25], "priority": 6, "maxSeedDistanceKm": 12000, "maxFrontierGapKm": 650 },
+    { "id": "antarctica", "seed": [0, -82], "priority": 7, "maxSeedDistanceKm": 12000, "maxFrontierGapKm": 650 }
+  ],
+  "corridors": [
+    { "id": "darien", "bounds": [-80, 4, -75, 11] },
+    { "id": "mediterranean", "bounds": [-10, 30, 40, 39] },
+    { "id": "suez-red-sea", "bounds": [29, 12, 44, 33] },
+    { "id": "europe-asia", "bounds": [35, 40, 61, 57] },
+    { "id": "wallacea", "bounds": [115, -15, 151, 6] },
+    { "id": "bering", "bounds": [160, 45, 180, 75] },
+    { "id": "antarctic-ocean", "bounds": [-180, -62, 180, -45] }
+  ],
+  "geographicRules": [
+    {
+      "id": "antarctica-mainland",
+      "kind": "force-shard-for-parts",
+      "shardId": "antarctica",
+      "partIds": ["010:0"]
+    },
+    {
+      "id": "southern-ocean-land",
+      "kind": "force-shard-in-bounds",
+      "shardId": "antarctica",
+      "bounds": [-180, -90, 180, -50]
+    }
+  ],
+  "residualRules": [],
+  "exceptions": []
+}

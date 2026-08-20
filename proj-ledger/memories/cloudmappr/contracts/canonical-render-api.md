@@ -3,7 +3,7 @@ id: cloudmappr-canonical-render-api
 kind: contract
 status: active
 created: 2026-08-18
-updated: 2026-08-18
+updated: 2026-08-20
 roadmap: cloudmappr
 refs:
   - roadmaps/cloudmappr.md#canonical-cloud-image-rendering
@@ -29,3 +29,13 @@ encoder has explicit output, font, and parity proof.
 
 Enforce bounds, dimensions, point/label count, input size, and request-rate
 limits before loading geometry or invoking the rasterizer.
+
+## Implemented Baseline Slice
+
+`packages/server/src/render.ts` implements the content-addressed handler and a
+filesystem-backed immutable result store. It validates through the shared core,
+hashes canonical spec plus release and renderer/style/projection versions,
+constructs server SVG only from trusted geometry, rasterizes with the pinned
+`@resvg/resvg-js` adapter, and returns immutable SVG/PNG GET responses. The PNG
+adapter requires Deno permissions and is proven in the explicit live suite.
+Rate limiting and a production object-store adapter remain deployment concerns.

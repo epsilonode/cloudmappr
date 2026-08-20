@@ -3,7 +3,7 @@ id: cloudmappr-world-artifact-generation-toolchain
 kind: strategy
 status: ready
 created: 2026-08-18
-updated: 2026-08-18
+updated: 2026-08-20
 roadmap: cloudmappr
 refs:
   - roadmaps/cloudmappr.md#world-artifact-manifest
@@ -95,3 +95,42 @@ weaken assignment, manifest, or release guarantees.
 4. Add an explicit live generation task that runs the pinned CLI against a
    checksummed fixture and validates all eight independently decodable artifacts.
 5. Publish only validated immutable artifacts and their release record.
+
+## World Atlas Release Gate
+
+`packages/world-artifacts/src/world-atlas.ts` consumes the pinned
+`world-atlas@2.0.2/countries-10m` Natural Earth-derived country source. The
+current package materializes 4,220 atomic polygon parts. The former
+`countries-110m` review table is not release input.
+
+The generator loads a versioned policy at
+`packages/world-artifacts/policies/world-atlas-10m-seeded-frontier-v3-southern-ocean.json`.
+It derives shared-boundary adjacency and deterministic sampled geodesic
+frontier facts, applies the validated seven-seed/corridor policy, and writes an
+explained exact-coverage assignment into `provenance.json`. Explicit exceptions
+are source-policy data, not an unreviewed full assignment table. Run
+`deno task artifacts:world` with an optional policy document in
+`CLOUDMAPPR_PARTITION_POLICY_FILE`; without it the checked-in versioned policy
+is used. `deno task artifacts:world:review-template` now emits the explained
+10m policy report rather than pending per-part rows.
+
+The current result is a runnable 10m candidate. Human approval remains required
+only for calibrated policy revisions, any justified exceptions, delivery
+measurements, and production publication; it does not block local candidate
+generation.
+
+## Fixture Proof
+
+The initial proof is implemented at `packages/world-artifacts`. Its pure module
+defines the eight-shard union, branded IDs, assignment coverage checks, manifest
+construction, and digest descriptors. Its effect adapter runs
+`npm:mapshaper@0.7.53` through Deno, writes a typed fixture source, and emits one
+independent `land` TopoJSON object per shard. It writes a `manifest.json` beside
+them, and the live task reads that file back through the receiver's raw-manifest
+validator while checking the eight artifact IDs, single eager basemap, and
+SHA-256 digest shape.
+
+Run `mise run verify` for pure checks and `mise run test-live` for the explicit
+CLI proof. The live 10m proof emits, dissolves, re-topologizes, and independently
+decodes all eight candidate artifacts. Performance measurement and release
+publication remain pending components.

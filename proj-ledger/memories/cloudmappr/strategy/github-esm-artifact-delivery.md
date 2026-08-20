@@ -3,7 +3,7 @@ id: cloudmappr-github-esm-artifact-delivery
 kind: strategy
 status: active
 created: 2026-08-18
-updated: 2026-08-18
+updated: 2026-08-20
 roadmap: cloudmappr
 refs:
   - roadmaps/cloudmappr.md#isomorphic-mjs-d3-world-map
@@ -27,6 +27,11 @@ global geometry eagerly.
 Release automation generates artifacts, validates exact world coverage and the
 manifest, then publishes the reference clients and Deno resolve. The service must
 not silently render a mutable branch or a different world-data release.
+
+Browser-facing modules must import only the receiver/runtime adapter files they
+need. They must not import a barrel that re-exports Mapshaper, World Atlas source
+JSON, source-assignment review, or other build-only modules; that would turn the
+controller import into an accidental world-data delivery path.
 
 Browser module caching and controller fetch caches key by immutable URL. Render
 URLs additionally encode the manifest/release identity in their content hash.

@@ -1,15 +1,25 @@
 {
   "compilerOptions": {
     "strict": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "lib": ["deno.ns", "dom", "dom.iterable"]
   },
   "tasks": {
+    "artifacts:prove": "deno test -A packages/world-artifacts/src/generation.live.test.ts",
+    "artifacts:fixture": "deno run -A packages/world-artifacts/src/generate-fixture.ts",
+    "artifacts:world": "deno run -A packages/world-artifacts/src/generate-world-atlas.ts",
+    "artifacts:measure": "deno run -A packages/world-artifacts/src/measure-world-atlas.ts",
+    "artifacts:compare": "deno run -A packages/world-artifacts/src/compare-world-atlas-measurements.ts",
+    "artifacts:world:review-template": "deno run -A packages/world-artifacts/src/generate-world-atlas-review-template.ts",
+    "artifacts:world:coastal-audit": "deno run -A packages/world-artifacts/src/generate-world-atlas-coastal-attachment-audit.ts",
+    "artifacts:world:coastal-release": "deno run -A packages/world-artifacts/src/generate-world-atlas-coastal-attachment-release.ts",
+    "dev:local": "deno run -A packages/server/src/dev.ts",
     "lint:deno": "deno lint packages",
     "lint:fp": "deno run -A npm:eslint packages",
     "lint": "deno task lint:deno && deno task lint:fp",
-    "check": "deno check packages/core/mod.ts",
-    "test": "deno test packages --ignore=packages/core/src/fp.live.test.ts",
-    "test:live": "deno test packages/core/src/fp.live.test.ts",
+    "check": "deno check packages/core/mod.ts packages/world-artifacts/mod.ts packages/client/mod.ts packages/server/mod.ts",
+    "test": "deno test packages --ignore=packages/core/src/fp.live.test.ts --ignore=packages/world-artifacts/src/generation.live.test.ts --ignore=packages/world-artifacts/src/local.live.test.ts --ignore=packages/world-artifacts/src/world-atlas.live.test.ts --ignore=packages/client/src/artifact-scene-loader.live.test.ts --ignore=packages/client/src/create-map.seam.test.ts --ignore=packages/server/src/render.seam.test.ts --ignore=packages/server/src/local-development.live.test.ts",
+    "test:live": "deno test packages/core/src/fp.live.test.ts && deno task artifacts:prove && deno test -A packages/world-artifacts/src/local.live.test.ts && deno test -A packages/world-artifacts/src/world-atlas.live.test.ts && deno test -A packages/client/src/artifact-scene-loader.live.test.ts && deno test -A packages/client/src/create-map.seam.test.ts && deno test -A packages/server/src/render.seam.test.ts && deno test -A packages/server/src/local-development.live.test.ts",
     "verify": "deno task lint && deno task check && deno task test"
   }
 }

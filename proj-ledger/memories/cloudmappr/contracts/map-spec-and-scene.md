@@ -3,7 +3,7 @@ id: cloudmappr-map-spec-and-scene
 kind: contract
 status: active
 created: 2026-08-18
-updated: 2026-08-18
+updated: 2026-08-20
 roadmap: cloudmappr
 refs:
   - roadmaps/cloudmappr.md#isomorphic-mjs-d3-world-map
@@ -29,3 +29,13 @@ and PNG. Layer order is land, markers, labels, then controls/overlays.
 Canonical render identity includes normalized spec, dimensions, theme, renderer
 version, fonts/styles, projection policy, and world-data release. The output hash
 must change when any of these inputs changes.
+
+## Implemented Baseline Slice
+
+`packages/core/src/map.ts` now owns the browser-safe v1 model, closed-key input
+validation, bounded dimensions/layers, normalized canonical JSON, a fixed
+Mercator fit-to-viewBox projection, semantic land/marker/label scene records,
+and escaped deterministic SVG serialization. `packages/client` and
+`packages/server` both consume this module. Controls/overlays and label-collision
+policy remain pending; the renderer currently establishes land, marker, then
+label order.

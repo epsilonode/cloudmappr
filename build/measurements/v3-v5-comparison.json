@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "controlRelease": "world-atlas-2.0.2-10m-seeded-frontier-v3-southern-ocean-b639a7ca9a00",
+  "candidateRelease": "world-atlas-2.0.2-10m-seeded-frontier-v5-arctic-pacific-b639a7ca9a00",
+  "scenarios": {
+    "north-america": {
+      "requestCount": 2,
+      "rawBytes": -487207,
+      "gzipBytes": -136774,
+      "brotliBytes": -101193,
+      "decodeMs": -4.378099999999904,
+      "pathMs": -43.205299999999625,
+      "retainedHeapBytes": -33905440
+    },
+    "europe-africa": {
+      "requestCount": 1,
+      "rawBytes": -628378,
+      "gzipBytes": -176553,
+      "brotliBytes": -134917,
+      "decodeMs": -10.293999999999869,
+      "pathMs": -29.507700000000114,
+      "retainedHeapBytes": -33440448
+    },
+    "pacific": {
+      "requestCount": 2,
+      "rawBytes": -859608,
+      "gzipBytes": -241683,
+      "brotliBytes": -188504,
+      "decodeMs": -16.385699999999815,
+      "pathMs": -56.88799999999992,
+      "retainedHeapBytes": 19577432
+    },
+    "arctic": {
+      "requestCount": 1,
+      "rawBytes": -628378,
+      "gzipBytes": -176553,
+      "brotliBytes": -134917,
+      "decodeMs": -5.573800000000119,
+      "pathMs": -33.61030000000028,
+      "retainedHeapBytes": -22186208
+    },
+    "southern-ocean": {
+      "requestCount": 0,
+      "rawBytes": -1501264,
+      "gzipBytes": -418806,
+      "brotliBytes": -337382,
+      "decodeMs": -15.004299999999603,
+      "pathMs": -80.93970000000081,
+      "retainedHeapBytes": -39772656
+    },
+    "atlantic": {
+      "requestCount": 2,
+      "rawBytes": -487207,
+      "gzipBytes": -136774,
+      "brotliBytes": -101193,
+      "decodeMs": -10.963900000000649,
+      "pathMs": -30.90570000000025,
+      "retainedHeapBytes": -70983136
+    },
+    "antimeridian": {
+      "requestCount": 1,
+      "rawBytes": -1000779,
+      "gzipBytes": -281462,
+      "brotliBytes": -222228,
+      "decodeMs": -12.243099999999686,
+      "pathMs": -53.293799999998555,
+      "retainedHeapBytes": -36930472
+    },
+    "full-world": {
+      "requestCount": 3,
+      "rawBytes": 13278,
+      "gzipBytes": 570,
+      "brotliBytes": 13961,
+      "decodeMs": 4.4453999999996086,
+      "pathMs": -16.752800000000207,
+      "retainedHeapBytes": -18690608
+    }
+  },
+  "decision": "not-promotable",
+  "rationale": "Candidate increases full-world requests or raw bytes; retain it as an evidence-only local trial."
+}

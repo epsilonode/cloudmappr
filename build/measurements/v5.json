@@ -1,0 +1,485 @@
+{
+  "format": 1,
+  "release": "world-atlas-2.0.2-10m-seeded-frontier-v5-arctic-pacific-b639a7ca9a00",
+  "manifestFormat": 2,
+  "runs": 3,
+  "measuredAt": "2026-08-20T04:03:14.785Z",
+  "scenarios": {
+    "north-america": {
+      "bounds": [
+        -140,
+        20,
+        -50,
+        80
+      ],
+      "artifactIds": [
+        "world-basemap",
+        "north-america",
+        "islands-arctic",
+        "islands-epac"
+      ],
+      "requestCount": 4,
+      "rawBytes": {
+        "median": 1895482,
+        "range": [
+          1895482,
+          1895482
+        ]
+      },
+      "gzipBytes": {
+        "median": 520819,
+        "range": [
+          520819,
+          520819
+        ]
+      },
+      "brotliBytes": {
+        "median": 436681,
+        "range": [
+          436681,
+          436681
+        ]
+      },
+      "decodeMs": {
+        "median": 22.140300000000025,
+        "range": [
+          18.51339999999982,
+          28.30370000000039
+        ]
+      },
+      "pathMs": {
+        "median": 77.82950000000073,
+        "range": [
+          59.89609999999993,
+          95.95560000000023
+        ]
+      },
+      "retainedHeapBytes": {
+        "median": 25441872,
+        "range": [
+          3692176,
+          60127688
+        ]
+      },
+      "pathCharacters": 3064325
+    },
+    "europe-africa": {
+      "bounds": [
+        -20,
+        -35,
+        50,
+        70
+      ],
+      "artifactIds": [
+        "world-basemap",
+        "europe",
+        "africa",
+        "asia",
+        "islands-arctic"
+      ],
+      "requestCount": 5,
+      "rawBytes": {
+        "median": 2087201,
+        "range": [
+          2087201,
+          2087201
+        ]
+      },
+      "gzipBytes": {
+        "median": 571103,
+        "range": [
+          571103,
+          571103
+        ]
+      },
+      "brotliBytes": {
+        "median": 481515,
+        "range": [
+          481515,
+          481515
+        ]
+      },
+      "decodeMs": {
+        "median": 23.572000000000116,
+        "range": [
+          21.748199999999997,
+          25.71560000000045
+        ]
+      },
+      "pathMs": {
+        "median": 75.6918999999998,
+        "range": [
+          73.11779999999999,
+          79.36259999999947
+        ]
+      },
+      "retainedHeapBytes": {
+        "median": 27440704,
+        "range": [
+          0,
+          48730632
+        ]
+      },
+      "pathCharacters": 3309405
+    },
+    "pacific": {
+      "bounds": [
+        150,
+        -35,
+        -150,
+        35
+      ],
+      "artifactIds": [
+        "world-basemap",
+        "north-america",
+        "oceania-major",
+        "islands-epac",
+        "islands-wpac"
+      ],
+      "requestCount": 5,
+      "rawBytes": {
+        "median": 1608934,
+        "range": [
+          1608934,
+          1608934
+        ]
+      },
+      "gzipBytes": {
+        "median": 439153,
+        "range": [
+          439153,
+          439153
+        ]
+      },
+      "brotliBytes": {
+        "median": 369882,
+        "range": [
+          369882,
+          369882
+        ]
+      },
+      "decodeMs": {
+        "median": 16.297099999999773,
+        "range": [
+          14.514099999999416,
+          16.924399999999878
+        ]
+      },
+      "pathMs": {
+        "median": 62.40300000000025,
+        "range": [
+          50.72860000000037,
+          62.6893
+        ]
+      },
+      "retainedHeapBytes": {
+        "median": 19577432,
+        "range": [
+          14158144,
+          22832728
+        ]
+      },
+      "pathCharacters": 2617167
+    },
+    "arctic": {
+      "bounds": [
+        -180,
+        55,
+        180,
+        90
+      ],
+      "artifactIds": [
+        "world-basemap",
+        "north-america",
+        "europe",
+        "asia",
+        "islands-arctic"
+      ],
+      "requestCount": 5,
+      "rawBytes": {
+        "median": 2411866,
+        "range": [
+          2411866,
+          2411866
+        ]
+      },
+      "gzipBytes": {
+        "median": 657619,
+        "range": [
+          657619,
+          657619
+        ]
+      },
+      "brotliBytes": {
+        "median": 554517,
+        "range": [
+          554517,
+          554517
+        ]
+      },
+      "decodeMs": {
+        "median": 29.327000000000226,
+        "range": [
+          23.179199999999582,
+          29.78729999999996
+        ]
+      },
+      "pathMs": {
+        "median": 97.10649999999987,
+        "range": [
+          84.90479999999934,
+          97.14420000000064
+        ]
+      },
+      "retainedHeapBytes": {
+        "median": 41580512,
+        "range": [
+          0,
+          43025344
+        ]
+      },
+      "pathCharacters": 3881517
+    },
+    "southern-ocean": {
+      "bounds": [
+        -180,
+        -90,
+        180,
+        -50
+      ],
+      "artifactIds": [
+        "world-basemap",
+        "south-america",
+        "antarctica"
+      ],
+      "requestCount": 3,
+      "rawBytes": {
+        "median": 875116,
+        "range": [
+          875116,
+          875116
+        ]
+      },
+      "gzipBytes": {
+        "median": 241435,
+        "range": [
+          241435,
+          241435
+        ]
+      },
+      "brotliBytes": {
+        "median": 204353,
+        "range": [
+          204353,
+          204353
+        ]
+      },
+      "decodeMs": {
+        "median": 8.889500000000226,
+        "range": [
+          7.483700000000681,
+          10.026899999999841
+        ]
+      },
+      "pathMs": {
+        "median": 26.48189999999977,
+        "range": [
+          22.528299999999945,
+          35.308100000000195
+        ]
+      },
+      "retainedHeapBytes": {
+        "median": 0,
+        "range": [
+          0,
+          18280560
+        ]
+      },
+      "pathCharacters": 1415916
+    },
+    "atlantic": {
+      "bounds": [
+        -80,
+        -50,
+        20,
+        60
+      ],
+      "artifactIds": [
+        "world-basemap",
+        "north-america",
+        "south-america",
+        "europe",
+        "africa",
+        "asia",
+        "antarctica",
+        "islands-arctic",
+        "islands-epac"
+      ],
+      "requestCount": 9,
+      "rawBytes": {
+        "median": 3102803,
+        "range": [
+          3102803,
+          3102803
+        ]
+      },
+      "gzipBytes": {
+        "median": 848706,
+        "range": [
+          848706,
+          848706
+        ]
+      },
+      "brotliBytes": {
+        "median": 719598,
+        "range": [
+          719598,
+          719598
+        ]
+      },
+      "decodeMs": {
+        "median": 31.896300000000338,
+        "range": [
+          30.68459999999959,
+          36.06919999999991
+        ]
+      },
+      "pathMs": {
+        "median": 113.29359999999997,
+        "range": [
+          105.4358000000002,
+          126.56880000000001
+        ]
+      },
+      "retainedHeapBytes": {
+        "median": 18983088,
+        "range": [
+          0,
+          59163032
+        ]
+      },
+      "pathCharacters": 5041604
+    },
+    "antimeridian": {
+      "bounds": [
+        170,
+        -20,
+        -170,
+        30
+      ],
+      "artifactIds": [
+        "world-basemap",
+        "islands-wpac"
+      ],
+      "requestCount": 2,
+      "rawBytes": {
+        "median": 941540,
+        "range": [
+          941540,
+          941540
+        ]
+      },
+      "gzipBytes": {
+        "median": 258543,
+        "range": [
+          258543,
+          258543
+        ]
+      },
+      "brotliBytes": {
+        "median": 215397,
+        "range": [
+          215397,
+          215397
+        ]
+      },
+      "decodeMs": {
+        "median": 8.991799999999785,
+        "range": [
+          8.433999999999287,
+          10.916799999999967
+        ]
+      },
+      "pathMs": {
+        "median": 31.054300000000694,
+        "range": [
+          29.594600000000355,
+          37.569800000000214
+        ]
+      },
+      "retainedHeapBytes": {
+        "median": 9978312,
+        "range": [
+          1686880,
+          24119016
+        ]
+      },
+      "pathCharacters": 1492394
+    },
+    "full-world": {
+      "bounds": [
+        -180,
+        -90,
+        180,
+        90
+      ],
+      "artifactIds": [
+        "world-basemap",
+        "north-america",
+        "south-america",
+        "europe",
+        "africa",
+        "asia",
+        "oceania-major",
+        "antarctica",
+        "islands-arctic",
+        "islands-epac",
+        "islands-wpac"
+      ],
+      "requestCount": 11,
+      "rawBytes": {
+        "median": 3689141,
+        "range": [
+          3689141,
+          3689141
+        ]
+      },
+      "gzipBytes": {
+        "median": 1009293,
+        "range": [
+          1009293,
+          1009293
+        ]
+      },
+      "brotliBytes": {
+        "median": 855264,
+        "range": [
+          855264,
+          855264
+        ]
+      },
+      "decodeMs": {
+        "median": 43.35040000000026,
+        "range": [
+          40.595800000000054,
+          48.606299999999464
+        ]
+      },
+      "pathMs": {
+        "median": 134.1291000000001,
+        "range": [
+          116.62289999999939,
+          145.0031999999992
+        ]
+      },
+      "retainedHeapBytes": {
+        "median": 60726136,
+        "range": [
+          0,
+          63523424
+        ]
+      },
+      "pathCharacters": 6026600
+    }
+  }
+}
